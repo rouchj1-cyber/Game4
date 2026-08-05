@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>캐릭터 선택</title>
+  <link rel="stylesheet" href="character.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="screen">
+    <header class="top-bar">
+      <div class="currencies">
+        <div class="currency">
+          <span class="currency-icon gem"></span>
+          <span class="currency-value" id="gems">115</span>
+          <button class="plus-btn" type="button" aria-label="보석 충전">+</button>
+        </div>
+        <div class="currency">
+          <span class="currency-icon gold"></span>
+          <span class="currency-value" id="gold">240,939</span>
+          <button class="plus-btn" type="button" aria-label="골드 충전">+</button>
+        </div>
+        <div class="currency">
+          <span class="currency-icon crystal"></span>
+          <span class="currency-value" id="crystals">1,043</span>
+          <button class="plus-btn" type="button" aria-label="크리스탈 충전">+</button>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button class="icon-btn mail" type="button" aria-label="메일">
+          <span class="badge">N</span>
+        </button>
+        <button class="icon-btn settings" type="button" aria-label="설정"></button>
+        <button class="icon-btn profile" type="button" aria-label="프로필"></button>
+      </div>
+    </header>
+
+    <main class="stage">
+      <div class="book-bg" aria-hidden="true"></div>
+
+      <section class="modal" role="dialog" aria-labelledby="modal-title">
+        <header class="modal-header">
+          <h1 id="modal-title">캐릭터 선택</h1>
+          <button class="close-btn" type="button" aria-label="닫기">×</button>
+        </header>
+
+        <div class="card-row" id="card-row">
+          <!-- cards injected by JS -->
+        </div>
+
+        <div class="modal-footer">
+          <button id="play-btn" class="play-btn" type="button">이 캐릭터로 출전</button>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-item active" type="button">카드관리</button>
+      <button class="nav-item" type="button">카드도감</button>
+      <button class="nav-item" type="button">랭킹</button>
+      <button class="nav-item" type="button">도전과제</button>
+      <button class="nav-item" type="button">상점</button>
+    </nav>
+  </div>
+
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="characters-data.js"></script>
+  <script src="character.js"></script>
+</body>
+</html>

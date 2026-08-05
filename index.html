@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>좀비 서바이벌 3D</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="game-wrap">
+    <header class="hud">
+      <div class="hud-left">
+        <div class="hud-brand">좀비 서바이벌 3D</div>
+        <div class="hud-character">
+          <span id="char-name">스테파니</span>
+          <span class="char-skill" id="char-skill">생명력</span>
+          <span class="char-weapon" id="char-weapon">M16</span>
+        </div>
+      </div>
+      <div class="hud-stats">
+        <span>HP <strong id="hp">100</strong></span>
+        <span>점수 <strong id="score">0</strong></span>
+        <span>웨이브 <strong id="wave">1</strong></span>
+        <span>처치 <strong id="kills">0</strong></span>
+      </div>
+    </header>
+
+    <div id="viewport">
+      <canvas id="game"></canvas>
+
+      <div id="crosshair" class="crosshair" aria-hidden="true">
+        <span class="ch-h"></span>
+        <span class="ch-v"></span>
+        <span class="ch-dot"></span>
+      </div>
+
+      <div id="scope" class="scope hidden" aria-hidden="true">
+        <div class="scope-ring">
+          <div class="scope-glass">
+            <span class="scope-cross-h"></span>
+            <span class="scope-cross-v"></span>
+            <span class="scope-center"></span>
+            <span class="scope-mark top"></span>
+            <span class="scope-mark bottom"></span>
+            <span class="scope-mark left"></span>
+            <span class="scope-mark right"></span>
+          </div>
+        </div>
+        <div class="scope-vignette"></div>
+      </div>
+
+      <div id="hitmarker" class="hitmarker hidden" aria-hidden="true"></div>
+      <div id="damage-flash" class="damage-flash" aria-hidden="true"></div>
+      <div id="critical-banner" class="critical-banner hidden">비상! <kbd>G</kbd> 수류탄 투척</div>
+
+      <div id="overlay" class="overlay">
+        <div class="panel">
+          <h1>좀비 서바이벌 3D</h1>
+          <p class="tagline">캐릭터별 화기로 조준하고, 위기엔 수류탄을 던지세요.</p>
+          <p class="selected-line">출전: <strong id="overlay-char">스테파니</strong> · <span id="overlay-skill">생명력</span> · <span id="overlay-weapon">M16</span></p>
+          <ul class="controls">
+            <li><kbd>WASD</kbd> 이동 · <kbd>마우스</kbd> 시점</li>
+            <li><kbd>우클릭</kbd> 조준 · <kbd>좌클릭</kbd> 연사</li>
+            <li><kbd>G</kbd> 수류탄 (위기 시 위력 증가)</li>
+            <li><kbd>R</kbd> 재장전 · <kbd>Esc</kbd> 커서 해제</li>
+          </ul>
+          <div class="panel-actions">
+            <button id="start-btn" type="button">게임 시작</button>
+            <a class="panel-link" href="character.html">캐릭터 선택</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="gameover" class="overlay hidden">
+        <div class="panel">
+          <h1>게임 오버</h1>
+          <p>점수 <strong id="final-score">0</strong> · 웨이브 <strong id="final-wave">1</strong></p>
+          <div class="panel-actions">
+            <button id="retry-btn" type="button">다시 하기</button>
+            <a class="panel-link" href="character.html">캐릭터 변경</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="ammo-bar">
+      <span><span id="weapon-name">M16</span> · 탄약 <strong id="ammo">30</strong> / <strong id="mag-size">30</strong></span>
+      <span>수류탄 <strong id="grenades">3</strong></span>
+      <span id="aim-hint" class="aim-hint">우클릭으로 조준</span>
+      <span id="reload-hint" class="hint hidden">재장전 중...</span>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script src="characters-data.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
